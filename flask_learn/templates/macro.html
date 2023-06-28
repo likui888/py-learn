@@ -1,0 +1,21 @@
+{% macro input(name, value='', type='text') %}
+        <label>
+          {{ caller() }} :
+        </label>
+    <input type="{{ type }}" name="{{ name }}" value="{{ value }}"/>
+{% endmacro %}
+
+{% macro form(id, method='post') %}
+    <form id="{{ id }}" method="{{ method }}">
+        {{ caller() }}
+    </form>
+{% endmacro %}
+
+{% call form('myform') %}
+    {% call input('username',value='22') %}
+        账户
+    {% endcall %}
+  {% call input('username',type='password') %}
+        密码
+    {% endcall %}
+{% endcall %}
